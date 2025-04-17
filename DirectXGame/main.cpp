@@ -12,6 +12,13 @@ int WINAPI WinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ LPSTR, _In_ int) {
 
 	DirectXCommon* dxcommon = DirectXCommon::GetInstance();
 
+	int32_t w = dxcommon->GetBackBufferWidth();
+	int32_t h = dxcommon->GetBackBufferHeight();
+	DebugText::GetInstance()->ConsolePrintf(
+);
+
+
+
 	GameScene* gameScene = new GameScene();
 
 	gameScene->Initialize();
