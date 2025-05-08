@@ -20,4 +20,6 @@ public:
 
 	Particle* particle_ = nullptr;
 
+	std::list<Particle*> particles_;
+
 };

@@ -4,8 +4,10 @@ using namespace KamataEngine;
 
 using namespace MathUtility;
 
-void Particle::Intialize(Model* model) {
+void Particle::Intialize(Model* model, Vector3 position) {
 	assert(model);
+
+	
 
 	model_ = model;
 
@@ -14,6 +16,10 @@ void Particle::Intialize(Model* model) {
 	objectcolor_.Initialize();
 
 	color_ = {1, 1, 0, 1};
+
+	worldtransform_.translation_ = position;
+
+	
 }
 
 void Particle::Update() { 
