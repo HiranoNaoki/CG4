@@ -18,4 +18,8 @@ private:
 	WorldTransform worldtransform_;
 
 	Model* model_ = nullptr;
+
+	ObjectColor objectcolor_;
+
+	Vector4 color_;
 };
