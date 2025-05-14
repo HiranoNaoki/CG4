@@ -4,7 +4,7 @@ using namespace KamataEngine;
 
 using namespace MathUtility;
 
-void Particle::Intialize(Model* model, Vector3 position) {
+void Particle::Intialize(Model* model, Vector3 position, Vector3 velocity) {
 	assert(model);
 
 	
@@ -19,11 +19,13 @@ void Particle::Intialize(Model* model, Vector3 position) {
 
 	worldtransform_.translation_ = position;
 
+	velocity_ = velocity;
+
 	
 }
 
 void Particle::Update() { 
-	worldtransform_.translation_ += {0.0f, 0.1f, 0.0f};
+	worldtransform_.translation_ += velocity_;
 
 	worldtransform_.UpdateMatrix();
 

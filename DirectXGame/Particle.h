@@ -7,7 +7,7 @@ using namespace KamataEngine;
 class Particle{
 
 	public:
-	void Intialize(Model* model, Vector3 position);
+	void Intialize(Model* model, Vector3 position, Vector3 velocity);
 
 	void Update();
 
@@ -22,4 +22,6 @@ private:
 	ObjectColor objectcolor_;
 
 	Vector4 color_;
+
+	Vector3 velocity_;
 };
