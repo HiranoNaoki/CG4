@@ -23,9 +23,9 @@ void GameScene::Initialize() {
 		Vector3 velocity = {distribution(randomEngine), distribution(randomEngine), 0};
 		Normalize(velocity);
 
-		velocity += distribution(randomEngine);
+		velocity *= distribution(randomEngine);
 
-		velocity += 0.1f;
+		velocity *= 0.1f;
 
 		particle_->Intialize(modelParticle_, position,velocity);
 
