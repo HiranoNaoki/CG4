@@ -31,6 +31,17 @@ void Particle::Update() {
 
 	objectcolor_.SetColor(color_);
 
+	if (isFinished_) {
+		return;
+	}
+
+	counter_ += 1.0 / 60.0f;
+
+	if (counter_ >= kDuration) {
+		counter_ = kDuration;
+
+		isFinished_ = true;
+	}
 }
 
 void Particle::Draw(Camera& camera) {

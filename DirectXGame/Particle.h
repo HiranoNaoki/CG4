@@ -24,4 +24,10 @@ private:
 	Vector4 color_;
 
 	Vector3 velocity_;
+
+	bool isFinished_ = false;
+
+	float counter_ = 0.0f;
+
+	const float kDuration = 1.0;
 };
