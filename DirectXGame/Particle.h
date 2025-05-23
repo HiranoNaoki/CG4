@@ -13,6 +13,8 @@ class Particle{
 
 	void Draw(Camera& camera);
 
+	bool IsFinished() { return isFinished_; }
+
 private:
 
 	WorldTransform worldtransform_;
@@ -29,5 +31,5 @@ private:
 
 	float counter_ = 0.0f;
 
-	const float kDuration = 1.0;
+	const float kDuration = 1.0f;
 };
