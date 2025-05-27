@@ -14,6 +14,8 @@ public:
 
 	void Draw();
 
+	void ParticleBorn();
+
 	Model* modelParticle_ = nullptr;
 
 	Camera camera_;

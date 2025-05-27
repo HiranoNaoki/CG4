@@ -36,6 +36,8 @@ void GameScene::Initialize() {
 		
 	}
 
+	ParticleBorn();
+
 	
 }
 
@@ -81,4 +83,6 @@ GameScene::~GameScene() {
 	
 	particles_.clear();
 }
+
+void GameScene::ParticleBorn() {}
 
