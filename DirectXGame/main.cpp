@@ -1,17 +1,18 @@
 #include <Windows.h>
 #include <KamataEngine.h>
+#include "Shader.h"
 #include "GameScene.h"
 #include <cassert>
-#include <d3dcompiler.h>
+//#include <d3dcompiler.h>
 
 using namespace KamataEngine;
 
 
-ID3DBlob* CompileShader(const std::wstring& filePath, const std::string& shaderModel);
+//ID3DBlob* CompileShader(const std::wstring& filePath, const std::string& shaderModel);
 // シェーダコンパイル関数
 // filePath:シェーダファイルのパス　例 L"Resources/shaders/TestVS.hlsl"
 // shaderModel:シェーダモデル　　例　"vs_5.0"
-ID3DBlob* CompileShader(const std::wstring& filePath, const std::string& shaderModel) {
+/* ID3DBlob* CompileShader(const std::wstring& filePath, const std::string& shaderModel) {
 	ID3DBlob* shaderBlob = nullptr;
 	ID3DBlob* errorBlob = nullptr;
 
@@ -32,7 +33,7 @@ ID3DBlob* CompileShader(const std::wstring& filePath, const std::string& shaderM
 	}
 	// 生成したshaderBlobを返す
 	return shaderBlob;
-}
+}*/
 
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ LPSTR, _In_ int) {
@@ -99,20 +100,22 @@ int WINAPI WinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ LPSTR, _In_ int) {
 	ID3DBlob* psBlob = nullptr;*/
 
 	// 頂点シェーダの読み込みとコンパイル
-	ID3DBlob* vsBlob = CompileShader(L"Resources/shaders/TestVS.hlsl", "vs_5_0");
-	assert(vsBlob != nullptr);
+	Shader vs;
+	vs.Load(L"Resources/shaders/TestVS.hlsl", "vs_5_0");
+	assert(vs.GetBlob() != nullptr);
 
 	// ピクセルシェーダの読み込みとコンパイル
-	ID3DBlob* psBlob = CompileShader(L"Resources/shaders/TestPS.hlsl", "ps_5_0");
-	assert(psBlob != nullptr);
+	Shader ps;
+	ps.Load(L"Resources/shaders/TestPS.hlsl", "ps_5_0");
+	assert(ps.GetBlob() != nullptr);
 
 	
 	//PSO(PipelineStateObject)の生成
 	D3D12_GRAPHICS_PIPELINE_STATE_DESC graphicsPiplineStateDesc{};
 	graphicsPiplineStateDesc.pRootSignature = rootSignature;//RootSignature
 	graphicsPiplineStateDesc.InputLayout = inputLayoutDesc;//InputLayout
-	graphicsPiplineStateDesc.VS = {vsBlob->GetBufferPointer(), vsBlob->GetBufferSize()};//VertexShader
-	graphicsPiplineStateDesc.PS = {psBlob->GetBufferPointer(), psBlob->GetBufferSize()};//PixelShader
+	graphicsPiplineStateDesc.VS = {vs.GetBlob()->GetBufferPointer(), vs.GetBlob()->GetBufferSize()}; // VertexShader
+	graphicsPiplineStateDesc.PS = {ps.GetBlob()->GetBufferPointer(), ps.GetBlob()->GetBufferSize()}; // PixelShader
 	graphicsPiplineStateDesc.BlendState = blendDesc;//BlendState
 	graphicsPiplineStateDesc.RasterizerState = rasterizerDesc;//RasterizerState
 
@@ -207,8 +210,7 @@ int WINAPI WinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ LPSTR, _In_ int) {
 	signatureBlob->Release();
 	
 	rootSignature->Release();
-	vsBlob->Release();
-	psBlob->Release();
+	
 
 	KamataEngine::Finalize();
 
