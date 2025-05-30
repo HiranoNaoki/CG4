@@ -14,35 +14,22 @@ void GameScene::Initialize() {
 
 	
 
-	for (int i = 0; i < 150; i++) {
-
-		particle_ = new Particle();
-
-		Vector3 position = {0.0f, 0.0f, 0.0f};
-
-		Vector3 velocity = {distribution(randomEngine), distribution(randomEngine), 0};
-		Normalize(velocity);
-
-		velocity *= distribution(randomEngine);
-
-		velocity *= 0.1f;
-
-		particle_->Intialize(modelParticle_, position,velocity);
-
-		particles_.push_back(particle_);
-
-		
-
-		
-	}
-
-	ParticleBorn();
+	srand((unsigned)time(NULL));
 
 	
 }
 
 
 void GameScene::Update() { 
+	if (rand() % 20 == 0) {
+		
+		Vector3 position = {distribution(randomEngine) * 30.0f, distribution(randomEngine) * 20.0f, 0};
+		
+		ParticleBorn(position);
+	}
+
+
+
 	for (  Particle* particle : particles_) {
 	particle->Update();
 	}
@@ -84,5 +71,21 @@ GameScene::~GameScene() {
 	particles_.clear();
 }
 
-void GameScene::ParticleBorn() {}
+void GameScene::ParticleBorn(Vector3 position) {
+		for (int i = 0; i < 150; i++) {
+		
+		Particle* particle = new Particle();
+		
+		
+		Vector3 velocity = {distribution(randomEngine), distribution(randomEngine), 0};
+		
+		particle->Intialize(modelParticle_, position, velocity);
+		
+		particles_.push_back(particle);
+		
+		Normalize(velocity);
+		velocity *= distribution(randomEngine);
+		velocity *= 0.1f;
+	}
+}
 

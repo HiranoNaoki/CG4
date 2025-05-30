@@ -14,14 +14,20 @@ public:
 
 	void Draw();
 
-	void ParticleBorn();
+	void ParticleBorn(Vector3 position);
+
+		Camera camera_;
+
+		std::list<Particle*> particles_;
+
+	private:
 
 	Model* modelParticle_ = nullptr;
 
-	Camera camera_;
+
 
 	Particle* particle_ = nullptr;
 
-	std::list<Particle*> particles_;
+	
 
 };
