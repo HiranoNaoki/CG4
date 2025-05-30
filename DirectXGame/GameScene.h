@@ -2,7 +2,7 @@
 #include "KamataEngine.h"
 #include "Particle.h"
 
-using namespace KamataEngine;
+//using namespace KamataEngine;
 
 class GameScene {
 public:

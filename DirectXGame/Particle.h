@@ -17,7 +17,7 @@ class Particle{
 
 private:
 
-	WorldTransform worldtransform_;
+	KamataEngine::WorldTransform worldtransform_;
 
 	Model* model_ = nullptr;
 
