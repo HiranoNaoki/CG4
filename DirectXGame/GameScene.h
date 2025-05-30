@@ -1,11 +1,14 @@
 #pragma once
 #include "KamataEngine.h"
+#include"Effect.h"
 #include "Particle.h"
 
 //using namespace KamataEngine;
 
 class GameScene {
 public:
+	GameScene();
+
 	~GameScene();
 
 	void Initialize();
@@ -14,20 +17,14 @@ public:
 
 	void Draw();
 
-	void ParticleBorn(Vector3 position);
-
-		Camera camera_;
-
-		std::list<Particle*> particles_;
-
-	private:
-
-	Model* modelParticle_ = nullptr;
-
-
-
-	Particle* particle_ = nullptr;
-
 	
 
+	private:
+		
+	
+	Camera camera_;
+
+	Model* modelEffect_;
+
+	Effect* effect_ = nullptr;
 };

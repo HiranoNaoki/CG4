@@ -7,29 +7,18 @@ using namespace KamataEngine;
 class Particle{
 
 	public:
-	void Intialize(Model* model, Vector3 position, Vector3 velocity);
+	void Intialize();
 
 	void Update();
 
-	void Draw(Camera& camera);
+	void Draw();
 
-	bool IsFinished() { return isFinished_; }
+	
 
 private:
 
-	KamataEngine::WorldTransform worldtransform_;
+	WorldTransform worldtransform_;
 
 	Model* model_ = nullptr;
 
-	ObjectColor objectcolor_;
-
-	Vector4 color_;
-
-	Vector3 velocity_;
-
-	bool isFinished_ = false;
-
-	float counter_ = 0.0f;
-
-	const float kDuration = 1.0f;
 };

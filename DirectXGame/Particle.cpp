@@ -1,62 +1,18 @@
 #include "Particle.h"
-#include <random>
 
-using namespace KamataEngine;
 
-using namespace MathUtility;
 
-void Particle::Intialize(Model* model, Vector3 position, Vector3 velocity) {
-	assert(model);
 
-	
-
-	model_ = model;
-
-	worldtransform_.Initialize();
-
-	objectcolor_.Initialize();
-
-	color_ = {1, 1, 0, 1};
-
-	worldtransform_.translation_ = position;
-
-	velocity_ = velocity;
-
+void Particle::Intialize() {
 	
 }
 
 void Particle::Update() { 
 	
-	if (isFinished_) {
-		return;
-	}
-
-	counter_ += 1.0f / 60.0f;
-
-	if (counter_ >= kDuration) {
-		counter_ = kDuration;
-
-		isFinished_ = true;
-	}
-
-	color_.w = std::clamp(1.0f - counter_ / kDuration, 0.0f, 1.0f);
-
-
-	worldtransform_.translation_ += velocity_;
-
-	worldtransform_.UpdateMatrix();
-
-	objectcolor_.SetColor(color_);
-
-
-
+	
 }
 
-void Particle::Draw(Camera& camera) {
-
-
-	model_->Draw(worldtransform_, camera, &objectcolor_);
-	;
+void Particle::Draw() {
 
 }
 
