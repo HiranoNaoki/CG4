@@ -53,4 +53,7 @@ void Finalize();
 /// </summary>
 /// <returns>終了フラグ</returns>
 bool Update();
+
+
+void UpdateMatrix();
 } // namespace KamataEngine

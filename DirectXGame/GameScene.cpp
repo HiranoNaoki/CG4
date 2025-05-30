@@ -1,6 +1,11 @@
 #include "GameScene.h"
+#include <random>
 
 using namespace KamataEngine;
+using namespace MathUtility;
+
+
+
 
 void GameScene::Initialize() {
 	modelEffect_ = Model::CreateFromOBJ("Hishigata", true);
@@ -8,12 +13,13 @@ void GameScene::Initialize() {
 	
 	camera_.Initialize();
 
-	Vector3 position = {0.0f, 0.0f, 0.0f};
+	//Vector3 position = {0.0f, 0.0f, 0.0f};
 
+	
 	
 	effect_ = new Effect();
 	
-	effect_->Initialize(modelEffect_, position);
+	effect_->Initialize(modelEffect_);
 }
 
 void GameScene::Update() { 

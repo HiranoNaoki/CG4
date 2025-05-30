@@ -7,7 +7,7 @@ using namespace MathUtility;
 class Effect {
 public:
 
-	void Initialize(KamataEngine::Model* model, Vector3 position);
+	void Initialize(KamataEngine::Model* model);
 
 	
 	void Update();
@@ -24,4 +24,8 @@ private:
 	
 	KamataEngine::Vector4 color_;
 
+	
+
+	KamataEngine::Vector3 startScale_; 
+	KamataEngine::Vector3 targetScale_; 
 };
