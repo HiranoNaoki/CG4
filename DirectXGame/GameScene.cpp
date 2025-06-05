@@ -19,7 +19,18 @@ void GameScene::Initialize() {
 	
 	effect_ = new Effect();
 	
-	effect_->Initialize(modelEffect_);
+	//effect_->Initialize(modelEffect_);
+
+	for (int i = 0; i < 10; i++) {
+		
+		Effect* effect = new Effect();
+		
+		Vector3 pos = Vector3(0.0f, 0.0f, 0.0f);
+		
+		effect->Initialize(modelEffect_, pos);
+		
+		effectes_.push_back(effect);
+	}
 }
 
 void GameScene::Update() { 

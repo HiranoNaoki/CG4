@@ -10,7 +10,7 @@ std::mt19937 randomEngine(seedGenerator());
 std::uniform_real_distribution<float> RandomSize(0.0f, 1.0f);
 std::uniform_real_distribution<float> RandomRotation(-1.0f, 1.0f);
 
-void Effect::Initialize(KamataEngine::Model* model) {
+void Effect::Initialize(KamataEngine::Model* model,KamataEngine::Vector3 pos) {
 	assert(model);
 
 	model_ = model;
@@ -28,7 +28,7 @@ void Effect::Initialize(KamataEngine::Model* model) {
 	objectColor_.Initialize();
 	color_ = {1, 1, 0, 1};
 
-	
+	worldTransform_.translation_ = pos;
 	
 
 }
@@ -36,9 +36,11 @@ void Effect::Initialize(KamataEngine::Model* model) {
 void Effect::Update() {
 
 	
+	worldTransform_.TransferMatrix();
+
 	worldTransform_.UpdateMatrix();
 	
-	objectColor_.SetColor(color_);
+	//objectColor_.SetColor(color_);
 }
 
 void Effect::Draw(KamataEngine::Camera& camera) {

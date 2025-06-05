@@ -7,7 +7,7 @@ using namespace MathUtility;
 class Effect {
 public:
 
-	void Initialize(KamataEngine::Model* model);
+	void Initialize(KamataEngine::Model* model,KamataEngine::Vector3 pos);
 
 	
 	void Update();
