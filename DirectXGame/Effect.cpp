@@ -36,6 +36,21 @@ void Effect::Initialize(KamataEngine::Model* model,KamataEngine::Vector3 pos) {
 void Effect::Update() {
 
 	
+	if (isFinished_) {
+		return;
+	}
+
+	counter_ += 1.0f / 60.0f;
+
+	if (counter_ >= kDuration) {
+		counter_ = kDuration;
+
+		    isFinished_ = true;
+	}
+
+	color_.w = std::clamp(1.0f -counter_ / kDuration,0.0f,1.0f);
+
+	
 	worldTransform_.TransferMatrix();
 
 	worldTransform_.UpdateMatrix();

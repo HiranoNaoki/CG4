@@ -15,6 +15,8 @@ public:
 	
 	void Draw(KamataEngine::Camera& camera);
 
+	bool IsFinished() { return isFinished_; }
+
 private:
 	KamataEngine::WorldTransform worldTransform_;
 	
@@ -28,4 +30,10 @@ private:
 
 	KamataEngine::Vector3 startScale_; 
 	KamataEngine::Vector3 targetScale_; 
+
+	bool isFinished_ = false;
+
+	float counter_ = 0.0f;
+
+	const float kDuration = 1.0f;
 };
