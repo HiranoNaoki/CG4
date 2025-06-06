@@ -17,7 +17,7 @@ void GameScene::Initialize() {
 
 	
 	
-	effect_ = new Effect();
+	
 	
 	//effect_->Initialize(modelEffect_);
 
@@ -34,7 +34,11 @@ void GameScene::Initialize() {
 }
 
 void GameScene::Update() { 
-	effect_->Update(); 
+
+	for (Effect* effect : effectes_) {
+	effect->Update(); 
+	}
+	
 }
 
 void GameScene::Draw() {
@@ -42,13 +46,19 @@ void GameScene::Draw() {
 	
 	Model::PreDraw(dxCommon->GetCommandList());
 	
-	effect_->Draw(camera_);
+	
 
+	for (Effect* effect : effectes_) {
+	 effect->Draw(camera_);
+	}
 	
 	Model::PostDraw();
 }
 
 GameScene::~GameScene() { 
 	delete modelEffect_;
-	delete effect_;
+	for (Effect* effect : effectes_) {
+	delete effect;
+	}
+	
 }

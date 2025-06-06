@@ -18,7 +18,7 @@ private:
 
 	Camera camera_;
 
-	Effect* effect_ = nullptr;
+	
 
 	std::list<Effect*> effectes_;
 };
