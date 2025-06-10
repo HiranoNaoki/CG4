@@ -48,6 +48,7 @@ void Effect::Update() {
 	
 	worldTransform_.TransferMatrix();
 
+
 	worldTransform_.UpdateMatrix();
 	
 	objectColor_.SetColor(color_);
