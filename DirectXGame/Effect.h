@@ -7,7 +7,7 @@ using namespace MathUtility;
 class Effect {
 public:
 
-	void Initialize(KamataEngine::Model* model,KamataEngine::Vector3 pos);
+	void Initialize(KamataEngine::Model* model,KamataEngine::Vector3 pos,float size,float rotate);
 
 	
 	void Update();
@@ -16,6 +16,8 @@ public:
 	void Draw(KamataEngine::Camera& camera);
 
 	bool IsFinished() { return isFinished_; }
+
+
 
 private:
 	KamataEngine::WorldTransform worldTransform_;

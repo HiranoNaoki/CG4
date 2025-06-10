@@ -5,12 +5,7 @@ using namespace KamataEngine;
 using namespace MathUtility;
 
 
-std::random_device seedGenerator;
-std::mt19937 randomEngine(seedGenerator());
-std::uniform_real_distribution<float> RandomSize(0.0f, 1.0f);
-std::uniform_real_distribution<float> RandomRotation(-1.0f, 1.0f);
-
-void Effect::Initialize(KamataEngine::Model* model,KamataEngine::Vector3 pos) {
+void Effect::Initialize(KamataEngine::Model* model,KamataEngine::Vector3 pos ,float size,float rotate) {
 	assert(model);
 
 	model_ = model;
@@ -19,10 +14,10 @@ void Effect::Initialize(KamataEngine::Model* model,KamataEngine::Vector3 pos) {
 
 	//worldTransform_.translation_ = position;
 	
-	worldTransform_.scale_.y =RandomSize(randomEngine)* 10.0f ;
+	worldTransform_.scale_.y = size;
 
 
-	worldTransform_.rotation_.z =RandomRotation(randomEngine)*20.0f ;
+	worldTransform_.rotation_.z =rotate;
 
 	
 	objectColor_.Initialize();
@@ -55,7 +50,7 @@ void Effect::Update() {
 
 	worldTransform_.UpdateMatrix();
 	
-	//objectColor_.SetColor(color_);
+	objectColor_.SetColor(color_);
 }
 
 void Effect::Draw(KamataEngine::Camera& camera) {

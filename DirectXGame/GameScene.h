@@ -13,6 +13,8 @@ public:
 
 	~GameScene();
 
+	void EffectBorn(Vector3 position);
+
 private:
 	Model* modelEffect_ = nullptr;
 
