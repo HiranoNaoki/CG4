@@ -88,8 +88,8 @@ int WINAPI WinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ LPSTR, _In_ int) {
 	D3D12_GRAPHICS_PIPELINE_STATE_DESC graphicsPiplineStateDesc{};
 	graphicsPiplineStateDesc.pRootSignature = rootSignature;//RootSignature
 	graphicsPiplineStateDesc.InputLayout = inputLayoutDesc;//InputLayout
-	graphicsPiplineStateDesc.VS = {vs.GetBlob()->GetBufferPointer(), vs.GetBlob()->GetBufferSize()}; // VertexShader
-	graphicsPiplineStateDesc.PS = {ps.GetBlob()->GetBufferPointer(), ps.GetBlob()->GetBufferSize()}; // PixelShader
+	graphicsPiplineStateDesc.VS = {vs.GetDxcBlob()->GetBufferPointer(), vs.GetDxcBlob()->GetBufferSize()}; // VertexShader
+	graphicsPiplineStateDesc.PS = {ps.GetDxcBlob()->GetBufferPointer(), ps.GetDxcBlob()->GetBufferSize()}; // PixelShader
 	graphicsPiplineStateDesc.BlendState = blendDesc;//BlendState
 	graphicsPiplineStateDesc.RasterizerState = rasterizerDesc;//RasterizerState
 
