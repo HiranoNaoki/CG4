@@ -1,6 +1,7 @@
 #pragma once
 #include "KamataEngine.h"
 #include "Particle.h"
+#include <Model2.h>
 
 using namespace KamataEngine;
 
