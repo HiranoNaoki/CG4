@@ -1,13 +1,14 @@
 #pragma once
 
 #include <KamataEngine.h>
+#include "Model2.h"
 
 using namespace KamataEngine;
 
 class Particle{
 
 	public:
-	void Intialize(Model* model);
+	void Intialize(Model2* model);
 
 	void Update();
 
@@ -17,5 +18,5 @@ private:
 
 	WorldTransform worldtransform_;
 
-	Model* model_ = nullptr;
+	Model2* model_ = nullptr;
 };

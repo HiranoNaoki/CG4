@@ -1,8 +1,9 @@
 #include "Particle.h"
 
+
 using namespace KamataEngine;
 
-void Particle::Intialize(Model* model) {
+void Particle::Intialize(Model2* model) {
 	assert(model);
 
 	model_ = model;

@@ -1,7 +1,7 @@
 #pragma once
 #include "KamataEngine.h"
 #include "Particle.h"
-#include <Model2.h>
+#include "Model2.h"
 
 using namespace KamataEngine;
 
@@ -15,7 +15,7 @@ public:
 
 	void Draw();
 
-	Model* modelParticle_ = nullptr;
+	Model2* modelParticle_ = nullptr;
 
 	Camera camera_;
 
