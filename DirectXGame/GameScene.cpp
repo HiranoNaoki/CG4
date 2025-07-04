@@ -13,6 +13,7 @@ void GameScene::Initialize() {
 }
 
 
+
 void GameScene::Update() { 
 	
 	particle_->Update();
