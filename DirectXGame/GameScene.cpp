@@ -3,7 +3,7 @@
 using namespace KamataEngine;
 
 void GameScene::Initialize() { 
-	modelParticle_ = Model2::CreateSphere(4, 4);
+	modelParticle_ = Model2::CreateSquare();
 	camera_.Initialize();
 
 	particle_ = new Particle();
