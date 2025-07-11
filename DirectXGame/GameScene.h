@@ -3,10 +3,19 @@
 
 class GameScene {
 public:
+	GameScene();
+	~GameScene();
 
 	void Initialize();
 
 	void Update();
 
 	void Draw();
+
+private:
+	uint32_t textureHandle = 0;
+
+	KamataEngine::Sprite* sprite_ = nullptr;
+
+	int frame = 0;
 };
