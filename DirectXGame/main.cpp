@@ -7,7 +7,8 @@
 #include "PipelineState.h"
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
-//#include <d3dcompiler.h>
+#include "WorldTransfirmEx.h"
+    //#include <d3dcompiler.h>
 
 using namespace KamataEngine;
 
@@ -202,10 +203,26 @@ int WINAPI WinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ LPSTR, _In_ int) {
 		srvHandeleCPU
 	);
 
+
+	Model* model = Model::CreateFromOBJ("terrain");
+
+	WorldTransfirmEx worldTransform;
+	worldTransform.Initialize();
+	worldTransform.scale_ = Vector3(1.0f, 1.0f, 1.0f);
+
+	Camera camera;
+	camera.Initialize();
+	camera.translation_ = Vector3(0.0f, 1.0f, 0.0f);
+
+
 	while (true) {
 		if (KamataEngine::Update()) {
 			break;
 		}
+		worldTransform.rotation_.y += 0.005f;
+		worldTransform.UpdateMatrix();
+
+		camera.UpdateMatrix();
 
 		gameScene->Update();
 
@@ -247,6 +264,12 @@ int WINAPI WinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ LPSTR, _In_ int) {
 		
 		commandList->ClearDepthStencilView(dsvHandeleCPU, D3D12_CLEAR_FLAG_DEPTH, 1.0f, 0, 0, nullptr);
 
+
+		Model::PreDraw(commandList);
+		model->Draw(worldTransform, camera);
+		Model::PostDraw();
+
+
 		barrier.Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
 		barrier.Flags = D3D12_RESOURCE_BARRIER_FLAG_NONE;
 		barrier.Transition.pResource = renderTextureResource;
@@ -280,7 +303,7 @@ int WINAPI WinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ LPSTR, _In_ int) {
 	    dxcommon->PostDraw();
 	}
 
-
+	delete model;
 	
 	delete gameScene;
 
