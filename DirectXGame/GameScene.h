@@ -17,5 +17,10 @@ private:
 
 	KamataEngine::Sprite* sprite_ = nullptr;
 
+	
+	KamataEngine::Sprite* sprite_2 = nullptr;
+
+	float move = 3;
+
 	int frame = 0;
 };
