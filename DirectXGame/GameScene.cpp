@@ -19,6 +19,9 @@ void GameScene::Initialize() {
 
 	guraf_ = new Guraf();
 	guraf_->Initialize();
+
+	number_ = new Num();
+	number_-> Initialize();
 }
 
 
@@ -43,6 +46,8 @@ if (x <= -1280) {
 }
 
 guraf_->Update();
+
+number_->Update();
 }
 
 void GameScene::Draw() { 
@@ -76,7 +81,7 @@ void GameScene::Draw() {
 	
 	guraf_->Draw();
 
-
+	number_->Draw();
 
 	Sprite::PostDraw();
 }
