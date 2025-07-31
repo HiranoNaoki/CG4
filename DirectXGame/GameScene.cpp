@@ -1,4 +1,5 @@
 #include "GameScene.h"
+#include <cmath>
 
 using namespace KamataEngine;
 
@@ -10,6 +11,11 @@ void GameScene::Initialize() {
 
 	particle_->Intialize(modelParticle_);
 	Model2::StaticInitialize();
+
+	textureHandle = TextureManager::Load("start.png");
+
+	sprite_ = Sprite::Create(textureHandle, {0, 0});
+	sprite_2 = Sprite::Create(textureHandle, {0, 0});
 }
 
 
@@ -17,14 +23,44 @@ void GameScene::Initialize() {
 void GameScene::Update() { 
 	
 	particle_->Update();
+
+
+	frame++;
+
+float y = 45 * sin(frame * 0.05f);
+
+move--;
+
+float x = 0.0f + move;
+
+sprite_->SetPosition({x, y});
+sprite_2->SetPosition({1280 + x, y});
+if (x <= -1280) {
+	move = 0;
+}
 }
 
 void GameScene::Draw() { 
 	DirectXCommon* dxcommon = DirectXCommon::GetInstance();
 
+	
+
+	Sprite::PreDraw(dxcommon->GetCommandList());
+
+
+	//if (frame %60 >=30) {
+		sprite_->Draw();
+	sprite_2->Draw();
+	//}
+	
+	Sprite::PostDraw(); 
+
+	dxcommon->ClearDepthBuffer();
+
 	Model2::PreDraw(dxcommon->GetCommandList());
 
 	particle_->Draw(camera_);
+
 
 	Model2::PostDraw();
 }
