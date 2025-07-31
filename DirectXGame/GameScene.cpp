@@ -51,6 +51,8 @@ void GameScene::Draw() {
 	//if (frame %60 >=30) {
 		sprite_->Draw();
 	sprite_2->Draw();
+
+
 	//}
 	
 	Sprite::PostDraw(); 
