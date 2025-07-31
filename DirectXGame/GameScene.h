@@ -2,6 +2,7 @@
 #include "KamataEngine.h"
 #include "Particle.h"
 #include "Model2.h"
+#include "Guraf.h"
 
 using namespace KamataEngine;
 
@@ -31,6 +32,8 @@ private:
 	float move = 3;
 
 	int frame = 0;
+
+	Guraf* guraf_ = nullptr;
 
 
 };

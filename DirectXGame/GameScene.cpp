@@ -16,6 +16,9 @@ void GameScene::Initialize() {
 
 	sprite_ = Sprite::Create(textureHandle, {0, 0});
 	sprite_2 = Sprite::Create(textureHandle, {0, 0});
+
+	guraf_ = new Guraf();
+	guraf_->Initialize();
 }
 
 
@@ -38,6 +41,8 @@ sprite_2->SetPosition({1280 + x, y});
 if (x <= -1280) {
 	move = 0;
 }
+
+guraf_->Update();
 }
 
 void GameScene::Draw() { 
@@ -65,6 +70,15 @@ void GameScene::Draw() {
 
 
 	Model2::PostDraw();
+
+	Sprite::PreDraw(dxcommon->GetCommandList());
+
+	
+	guraf_->Draw();
+
+
+
+	Sprite::PostDraw();
 }
 
 GameScene::~GameScene() { 
